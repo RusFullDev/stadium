@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
 
+//Hello
 async function start() {
   try {
     const config = new DocumentBuilder()
@@ -12,7 +13,7 @@ async function start() {
       .setVersion('1.0.0')
       .addTag('NestJs,NodeJs,Postgres,Sequalize,JWT,Swagger,Bot,SMS,Mailer')
       .build();
-    const PORT = process.env.PORT||3030;
+    const PORT = process.env.PORT || 3030;
     const app = await NestFactory.create(AppModule);
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document);
@@ -27,5 +28,3 @@ async function start() {
   }
 }
 start();
-
-
