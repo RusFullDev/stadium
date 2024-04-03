@@ -17,15 +17,28 @@ import { MailModule } from './mail/mail.module';
 import { BotModule } from './bot/bot.module';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { BOT_NAME } from './add.constants';
+import { ComfortStadiumModule } from './comfort_stadium/comfort_stadium.module';
+import { MediaModule } from './media/media.module';
+import { StadiumsModule } from './stadiums/stadiums.module';
+import { CommentsModule } from './comments/comments.module';
+import { OrdersModule } from './orders/orders.module';
+import { Bot } from './bot/models/bot.models';
+import { ComfortStadium } from './comfort_stadium/models/comfort_stadium.models';
+import { Comment } from './comments/models/comment.models';
+import { Media } from './media/models/media.models';
+import { Order } from './orders/models/order.models';
+import { Stadium } from './stadiums/models/stadium.models';
 
 @Module({
   imports: [
-    TelegrafModule.forRootAsync({botName:BOT_NAME,
-    useFactory:()=>({
-      token:process.env.BOT_TOKEN,
-      middlewares:[],
-      include:[],
-    })}),
+    TelegrafModule.forRootAsync({
+      botName: BOT_NAME,
+      useFactory: () => ({
+        token: process.env.BOT_TOKEN,
+        middlewares: [],
+        include: [],
+      }),
+    }),
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
@@ -40,7 +53,13 @@ import { BOT_NAME } from './add.constants';
         Category,
         Admin,
         District,
-        Region, 
+        Region,
+        ComfortStadium,
+        Comment,
+        Media,
+        Order,
+        Stadium,
+        //  Bot
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -53,7 +72,13 @@ import { BOT_NAME } from './add.constants';
     RegionModule,
     AdminModule,
     MailModule,
-    BotModule,
+    // BotModule,
+    ComfortStadiumModule,
+    MediaModule,
+    StadiumsModule,
+    CommentsModule,
+
+    OrdersModule,
   ],
 })
 export class AppModule {}

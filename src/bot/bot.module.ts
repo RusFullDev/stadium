@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { BotService } from './bot.service';
 import { BotUpdate } from './bot.update';
-
+import { SequelizeModule } from '@nestjs/sequelize';
+import { Bot } from './models/bot.models';
 
 @Module({
-  controllers: [],
-  providers: [BotService, BotUpdate],
+  imports: [SequelizeModule.forFeature([Bot])],
+  providers: [BotService, BotUpdate, Bot],
+  exports: [Bot],
 })
 export class BotModule {}

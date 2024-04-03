@@ -1,13 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger"
-import { Column, DataType, Model, Table } from "sequelize-typescript"
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
-interface IUserCreateAttr{
-    full_name:string
-    phone:string
-    email:string
-    hashed_password:string
-    tg_link:string
-    photo:string
+interface IUserCreateAttr {
+  full_name: string;
+  phone: string;
+  email: string;
+  hashed_password: string;
+  tg_link: string;
+  photo: string;
 }
 
 @Table({ tableName: 'users' })
@@ -74,14 +74,12 @@ export class User extends Model<User, IUserCreateAttr> {
   })
   photo: string;
 
-  
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   is_owner: boolean;
 
-  
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
