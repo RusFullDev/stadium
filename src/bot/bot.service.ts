@@ -11,7 +11,6 @@ export class BotService {
     @InjectModel(Bot) private botRepo: typeof Bot,
     @InjectBot(BOT_NAME) private readonly bot: Telegraf<Context>,
   ) {}
-
   async start(ctx: Context) {
     const userId = ctx.from.id;
     const user = await this.botRepo.findByPk(userId);
@@ -23,10 +22,10 @@ export class BotService {
         last_name: ctx.from.last_name,
       });
 
-      await ctx.reply(`please, send your phone number`, {
+      await ctx.reply(`Please,<b>Send  your phone</b> push button`, {
         parse_mode: 'HTML',
         ...Markup.keyboard([
-          [Markup.button.contactRequest('sending phone number')],
+          [Markup.button.contactRequest('Sending phone number')],
         ])
           .resize()
           .oneTime(),

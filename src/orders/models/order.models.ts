@@ -12,8 +12,8 @@ import { User } from 'src/users/models/user.model';
 interface ICreateOrderAttr {
   userId: number;
   date: Date;
-  start_time: Date;
-  end_time: Date;
+  start_time: string;
+  end_time: string;
   price: number;
 }
 
@@ -31,10 +31,10 @@ export class Order extends Model<Order, ICreateOrderAttr> {
 
   @Column({ type: DataType.DATE })
   date: Date;
-  @Column({ type: DataType.DATE })
-  start_time: Date;
-  @Column({ type: DataType.DATE })
-  end_time: Date;
+  @Column({ type: DataType.STRING })
+  start_time: string;
+  @Column({ type: DataType.STRING })
+  end_time: string;
 
   @Column({ type: DataType.DECIMAL })
   price: number;

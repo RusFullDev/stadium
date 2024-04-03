@@ -59,7 +59,7 @@ import { Stadium } from './stadiums/models/stadium.models';
         Media,
         Order,
         Stadium,
-        //  Bot
+         Bot
       ],
       autoLoadModels: true,
       sync: { alter: true },
@@ -72,7 +72,7 @@ import { Stadium } from './stadiums/models/stadium.models';
     RegionModule,
     AdminModule,
     MailModule,
-    // BotModule,
+    BotModule,
     ComfortStadiumModule,
     MediaModule,
     StadiumsModule,

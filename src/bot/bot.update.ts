@@ -16,14 +16,14 @@ export class BotUpdate {
   constructor(private readonly botService: BotService) {}
   @Start()
   async onStart(@Ctx() ctx: Context) {
-    this.botService.start(ctx);
+   await this.botService.start(ctx);
   }
 
   // /*************************************************************** */
   @On('contact')
   async onContact(@Ctx() ctx: Context) {
     if ('contact' in ctx.message) {
-      await this.botService.start(ctx);
+      await this.botService.onContact(ctx);
     }
   }
 
@@ -43,27 +43,27 @@ export class BotUpdate {
   //   const inlineKeyboard = [
   //     [
   //       {
-  //         text: 'Button1',
+  //         text: 'Button 1',
   //         callback_data: 'Button1',
   //       },
   //       {
-  //         text: 'Button2',
+  //         text: 'Button 2',
   //         callback_data: 'Button2',
   //       },
   //       {
-  //         text: 'Button3',
+  //         text: 'Button 3',
   //         callback_data: 'Button3',
   //       },
   //     ],
   //     [
   //       {
-  //         text: 'Button4',
+  //         text: 'Button 4',
   //         callback_data: 'Button4',
   //       },
   //     ],
   //     [
   //       {
-  //         text: 'Button5',
+  //         text: 'Button 5',
   //         callback_data: 'Button5',
   //       },
   //     ],
@@ -84,7 +84,7 @@ export class BotUpdate {
   //   await ctx.reply('Button2 bosildi');
   // }
   // /********************************************************************* */
-  // @Action('button+[1-9]')
+  // @Action(/button+[1-9]/)
   // async onActionAnyButton(@Ctx() ctx: Context) {
   //   await ctx.reply('Any Button bosildi');
   // }
